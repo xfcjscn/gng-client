@@ -1,0 +1,13 @@
+<div ng-controller="SettingCtrl" class="container">
+	<form class="form-horizontal" name="settingForm">
+		<div class="form-group">
+			<label class="col-lg-2 control-label" for="language">{{'language' | translate}}</label>
+
+			<div class="col-lg-10">
+				<select class="form-control" ng-model="language">
+					<option value="en">{{'English' | translate}}</option>
+					<option value="zh">{{'Chinese' | translate}}</option>
+				</select></div>
+		</div>
+	</form>
+</div>

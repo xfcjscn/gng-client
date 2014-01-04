@@ -1,0 +1,5 @@
+<div ng-controller="AccountInfoCtrl" class="container">
+	<div class="jumbotron">
+		Welcome {{server.getSession().inspect().value.user.name}}! <a ng-click="logout()" href>Logout</a>
+	</div>
+</div>

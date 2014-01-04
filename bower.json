@@ -6,6 +6,8 @@
   },
   "devDependencies": {},
   "resolutions": {
-    "jquery": ">=1.4.3"
+    "jquery": ">=1.4.3",
+    "angular": "1.2.7",
+    "bootstrap": "~3.0.3"
   }
 }

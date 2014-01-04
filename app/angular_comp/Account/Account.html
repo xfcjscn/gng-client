@@ -1,0 +1,8 @@
+<div ng-controller="AccountCtrl" class="container">
+	<div ng-if="server.isLogin()">
+		<div ng-include="'../AccountInfo/AccountInfo.html'"></div>
+	</div>
+	<div ng-if="!server.isLogin()">
+		<div ng-include="'../LoginForm/LoginForm.html'"></div>
+	</div>
+</div>

@@ -1,0 +1,25 @@
+<div ng-controller="LoginFormCtrl" class="container">
+	<form role="form" name="loginForm" ng-submit="loginSubmit()" data-abide style="max-width: 330px;" parsley-validate>
+        <div ng-show="status == 'FAILURE'">
+            <div class="alert alert-danger">User Name or Password is incorrect</div>
+        </div>
+		<div class="form-group">
+			<label class="control-label sr-only" for="j_username">{{'userName' | translate}}</label>
+			<input class="form-control" type="email" name="j_username" ng-model="formData.j_username" placeholder="{{'userName' | translate}}"
+                   required  parsley-trigger="change">
+        </div>
+		<div class="form-group">
+			<label class="control-label sr-only" for="j_password">{{'password' | translate}}</label>
+		    <input class="form-control input-sm" type="password" name="j_password" ng-model="formData.j_password"
+                   placeholder="{{'password' | translate}}" required  parsley-trigger="change">
+		</div>
+        <div class="form-group">
+            <label for="_spring_security_remember_me">
+                <input type="checkbox" name="_spring_security_remember_me" ng-model="formData._spring_security_remember_me">
+                {{'rememberMe' | translate}}
+            </label>
+        </div>
+        <button class="btn btn-success btn-sm btn-block" type="submit">{{'signIn' | translate}}</button>
+        <a class="btn btn-primary btn-sm btn-block" href="#/RegisterForm">{{'register' | translate}}</a>
+	</form>
+</div>

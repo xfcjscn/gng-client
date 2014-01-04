@@ -1,0 +1,103 @@
+<div ng-controller="ShowcaseCtrl" class="container ui-mobile">
+    <div data-role="page" style="padding-top: 70px">
+        <div data-role="content">
+            <div class="row">
+                <div class="col-lg-3 col-sm-6">{{'totally' | translate}} {{items.length}} {{'items' | translate}}</div>
+                <div class="col-lg-3 col-sm-6">
+                    <label class="sr-only" for="query">{{'search' | translate}}</label>
+
+                    <div class="input-group">
+				<span class="input-group-addon">
+					<span class="glyphicon glyphicon-search"></span>
+				</span>
+                        <input class="form-control" ng-model="query" type="text" id="query">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <label class="sr-only" for="order"> {{'sort' | translate}} </label>
+
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-sort-by-attributes"></span>
+                        </span>
+                        <select class="form-control" ng-model="order" id="order">
+                            <option value="">{{'pleaseSelect' | translate}}</option>
+                            <option value="name">{{'name' | translate}}</option>
+                            <option value="desc">{{'description' | translate}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6" ng-if="server.isLogin()">
+                    <button class="btn btn-default" ng-click="showMyStuffes()">{{'myStuffs' | translate}}</button>
+                    <button class="btn btn-default" ng-click="showAllStuffes()">{{'allStuffs' | translate}}</button>
+                </div>
+
+                <div class="col-lg-3 col-sm-6">
+                    <a data-target="#showCaseModal" data-toggle="modal" href>
+                        <span class="simpleCart_quantity">0</span> items in cart
+                    </a>
+
+                    <div class="modal fade" id="showCaseModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title">{{'itemDetail' | translate}}</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="simpleCart_items"></div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-default simpleCart_checkout">{{'checkOut' | translate}}</button>
+                                    <button class="btn btn-default simpleCart_empty">{{'empty' | translate}}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="showCaseContainer" class="row" infinite-scroll="loadMoreItems()" infinite-scroll-distance="1"
+                 infinite-scroll-immediate-check="true"
+                 infinite-scroll-disabled="_onLoading">
+                <div class="simpleCart_shelfItem thumbnail col-lg-3 col-md-4 col-sm-6 col-xs-12" on-tap="selectItem"
+                     ng-repeat="item in items | filter:query | orderBy:order">
+                    <a ng-click="selectItem(item);" href="#mypanel">
+                        <img ng-src="{{item.images}}">
+                    </a>
+
+                    <div class="caption" ng-if="isEditable(item)">
+                        <div>
+                            <span class="item_id">{{item.Id}}</span>
+                        </div>
+                        <div>
+						<span class="item_name" href editable-text="item.name" buttons="no" blur="submit" onbeforesave="attachItem(item)"
+                              onaftersave="saveChanges()">{{item.Name}}</span>
+                        </div>
+                        <div>{{item.Desc}}</div>
+                        <div>{{item.Owner}}</div>
+                        <button class="btn btn-default btn-xs item_add">{{'add' | translate}}</button>
+                    </div>
+                    <div class="caption" ng-if="!isEditable(item)">
+                        <div>
+                            <span class="item_id">{{item.Id}}</span>
+                        </div>
+                        <div>
+                            <span class="item_name">{{item.Name}}</span>
+                        </div>
+                        <div>{{item.Desc}}</div>
+                        <div>{{item.Owner}}</div>
+                        <button class="btn btn-default btn-xs item_add">{{'add' | translate}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div data-role="panel" data-position="right" data-display="overlay" data-dismissible="false" data-position-fixed="true" id="mypanel">
+            <button class="btn btn-default" data-rel="close">{{'back' | translate}}</button>
+            <div ng-show="selectedItem">
+                <div ng-include="'../ItemDetails/ItemDetails.html'"></div>
+            </div>
+        </div>
+    </div>
+</div>
