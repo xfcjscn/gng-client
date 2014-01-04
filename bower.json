@@ -1,0 +1,11 @@
+{
+  "name": "gng-client",
+  "version": "0.1.0",
+  "dependencies": {
+    "client-infra": "*"
+  },
+  "devDependencies": {},
+  "resolutions": {
+    "jquery": ">=1.4.3"
+  }
+}
