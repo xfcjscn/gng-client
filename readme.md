@@ -1,1 +1,1 @@
-Infra project used to be a base for application
+GnG client project based on client-infra
