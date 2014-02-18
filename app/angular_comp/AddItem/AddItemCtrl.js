@@ -17,7 +17,7 @@ function AddItemCtrl($scope) {
 	// Save data, when upload completed
 	$scope.$on('FileUploadCompleted', function () {
 		// Here this will be executed in sync mode, since service should already OK at this point
-		require(['client-infra/app/scripts/models/server'], function (gplatformServer) {
+		require(['infra-client/app/scripts/models/server'], function (gplatformServer) {
 			gplatformServer.getDb().then(function (instance) {
 //				for(var idx in $scope.item.Images){
 //					var image = $scope.item.Images[idx];
@@ -35,7 +35,7 @@ function AddItemCtrl($scope) {
 
 	// Calculate images, when image uploaded
 	$scope.$on('uploaded', function (event, args) {
-		require(['client-infra/app/scripts/models/server'], function (server) {
+		require(['infra-client/app/scripts/models/server'], function (server) {
 			var info = angular.fromJson(args.response.response);
 			info.Path = info.uri;
 			$scope.item.ImageDetails.push(info);

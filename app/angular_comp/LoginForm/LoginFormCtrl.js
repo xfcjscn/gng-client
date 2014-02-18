@@ -1,6 +1,6 @@
 'use strict';
 function LoginFormCtrl($scope) {
-    require(['client-infra/app/scripts/models/server'], function (gplatformServer) {
+    require(['infra-client/app/scripts/models/server'], function (gplatformServer) {
         $scope.formData = {};
         $scope.status = '';
         $scope.loginSubmit = function () {

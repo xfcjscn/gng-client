@@ -1,6 +1,6 @@
 'use strict';
 function RegisterFormCtrl($scope) {
-	require(['client-infra/app/scripts/models/server'], function (gplatformServer) {
+	require(['infra-client/app/scripts/models/server'], function (gplatformServer) {
 		$scope.formData = {
 			Enabled: true,
 			CredentialAuthorityDetails: {Authority: 'ROLE_CUSTOMER'}

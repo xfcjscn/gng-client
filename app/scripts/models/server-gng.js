@@ -1,4 +1,4 @@
-define(['client-infra/app/scripts/models/server'], function(server) {
+define(['infra-client/app/scripts/models/server'], function(server) {
     var gngServer = {};
 
     gngServer._actionHistory = null;

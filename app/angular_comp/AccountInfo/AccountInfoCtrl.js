@@ -2,7 +2,7 @@
 function AccountInfoCtrl($scope, $http) {
 
 	$scope.logout = function() {
-		require(['client-infra/app/scripts/models/server'], function(server){
+		require(['infra-client/app/scripts/models/server'], function(server){
 			var promise = server.logout();
 
 			promise.then(function(data) {

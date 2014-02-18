@@ -1,6 +1,6 @@
 'use strict';
 function GPlatformCtrl($scope) {
-	require(['jquery', 'client-infra/app/scripts/models/server','client-infra/app/scripts/models/postload'], function($, server,postload) {
+	require(['jquery', 'infra-client/app/scripts/models/server','infra-client/app/scripts/models/postload'], function($, server,postload) {
         $scope.$on('$viewContentLoaded', function() {
 			postload.callBack();
 		});

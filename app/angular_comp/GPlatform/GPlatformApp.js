@@ -1,5 +1,5 @@
 'use strict';
-require(['jquery', 'client-infra/app/scripts/models/angular', 'client-infra/app/scripts/models/infra', 'css!client-infra/app/styles/infra'], function ($, angular) {
+require(['jquery', 'infra-client/app/scripts/models/angular', 'infra-client/app/scripts/models/infra', 'css!infra-client/app/styles/infra'], function ($, angular) {
 	var gplatformApp = angular.module('GPlatform', [ 'ngRoute', 'ngResource', 'ngAnimate', 'chieffancypants.loadingBar',
 		'http-auth-interceptor', 'infinite-scroll', 'pascalprecht.translate', 'xeditable', 'ngAnimate-animate.css' ]);
 

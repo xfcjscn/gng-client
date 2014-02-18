@@ -1,1 +1,1 @@
-GnG client project based on client-infra
+GnG client project based on infra-client
