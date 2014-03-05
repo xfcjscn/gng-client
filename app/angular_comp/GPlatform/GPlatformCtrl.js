@@ -8,6 +8,8 @@ function GPlatformCtrl($scope) {
 			postload.callBack();
 		});
 
+		server.config.serverURL = 'http://localhost:8080/gng-server-1.0';
+
         //User server in template directly
         $scope.server = server;
 	});
