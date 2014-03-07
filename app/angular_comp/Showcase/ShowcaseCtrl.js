@@ -37,10 +37,10 @@ function ShowcaseCtrl($scope) {
 						$scope.$apply(function () {
 							$scope._currentItemSet = result;
 							_.each(result, function (it) {
-								it.firstImage = it.ImageDetails;
-//								it.get_ImageDetails(function(res){
-//									console.log("IMage Details: "+ res);
-//								});
+								it.get_ImageDetails(function(res){
+									it.ImageDetails = res;
+									$scope.$apply();
+								});
 								$scope.items.push(it);
 							});
 							$scope._onLoading = false;

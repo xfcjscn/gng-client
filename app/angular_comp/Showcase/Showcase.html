@@ -63,7 +63,7 @@
                 <div class="simpleCart_shelfItem thumbnail col-lg-3 col-md-4 col-sm-6 col-xs-12" on-tap="selectItem"
                      ng-repeat="item in items | filter:query | orderBy:order">
                     <a ng-click="selectItem(item);" href="#mypanel">
-                        <img ng-src="{{item.Images}}">
+                        <img ng-src="{{server.config.serverURL + server.config.restURI + '/' + item.ImageDetails[0].Path}}">
                     </a>
 
                     <div class="caption" ng-if="isEditable(item)">

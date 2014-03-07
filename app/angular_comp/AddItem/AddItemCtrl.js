@@ -16,17 +16,29 @@ function AddItemCtrl($scope) {
 			$scope.status = 'NotStarted';
 		};
 
+		// Save data, when upload completed
+		$scope.$on('FileUploadCompleted', function () {
+			// Here this will be executed in sync mode, since service should already OK at this point
+			server.getDb().then(function (instance) {
+				instance.Items.add($scope.item);
+				var deferred = instance.Items.saveChanges();
+				deferred.then(function () {
+					$scope.status = 'Completed';
+				});
+			});
+		});
+
 		// Calculate images, when image uploaded
 		$scope.$on('uploaded', function (event, args) {
 			var info = angular.fromJson(args.response.response);
 			info.Path = info.uri;
-			info.ItemDetails = $scope.item;
-			//$scope.item.ImageDetails.push(info);
+			//info.ItemDetails = $scope.item;
+			$scope.item.ImageDetails.push(info);
 
-			server.getDb().then(function (instance) {
-				instance.Images.add(info);
-				var deferred = instance.saveChanges();
-			});
+//			server.getDb().then(function (instance) {
+//				instance.Images.add(info);
+//				var deferred = instance.saveChanges();
+//			});
 		});
 	});
 }
