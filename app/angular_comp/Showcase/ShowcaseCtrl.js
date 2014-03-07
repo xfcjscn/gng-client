@@ -38,9 +38,9 @@ function ShowcaseCtrl($scope) {
 							$scope._currentItemSet = result;
 							_.each(result, function (it) {
 								it.firstImage = it.ImageDetails;
-								it.get_ImageDetails(function(res){
-									console.log("IMage Details: "+ res);
-								});
+//								it.get_ImageDetails(function(res){
+//									console.log("IMage Details: "+ res);
+//								});
 								$scope.items.push(it);
 							});
 							$scope._onLoading = false;
