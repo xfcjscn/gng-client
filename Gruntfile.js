@@ -7,12 +7,19 @@
 // use this if you want to recursively match all subfolders:
 // 'test/spec/**/*.js'
 
-var angularCompConfig = {
-	js : 'angular_comp/**/*.js',
-	html : 'angular_comp/**/*.html',
-	json : 'angular_comp/**/*.json',
-	all : 'angular_comp/**',
-	index : 'angular_comp/GPlatform/GPlatform.html'
+var mainCfg = {
+	angular: {
+		comp: {
+			js: 'angular_comp/**/*.js',
+			html: 'angular_comp/**/*.html',
+			json: 'angular_comp/**/*.json',
+			all: 'angular_comp/**'
+		}
+	},
+	infra: 'bower_components/infra-client/app',
+	index: 'angular_comp/GPlatform/GPlatform.html',
+	localServer: 'c:/apps/Apache24/htdocs',
+	remoteServer: 'c:/apps/Apache24/htdocs'
 };
 
 module.exports = function (grunt) {
@@ -22,28 +29,33 @@ module.exports = function (grunt) {
 	require('load-grunt-tasks')(grunt);
 
 	grunt.initConfig({
-        requirejs: {
-            compile: {
-                options: {
-	                /*
-	                 For require-css
-	                    CSS internal URL rebase:
-	                        oldBase = src css path
-	                        newBase:
-	                                By default it's optimized css path, but if siteRoot available than siteRoot path (related to optimized css path)
-	                 */
-	                //buildCSS: false,
-	                separateCSS: true,
-	                //siteRoot: '../angular_comp/GPlatform',
+		requirejs: {
+			compile: {
+				options: {
+					/*
+					 For require-css
+					 CSS internal URL rebase:
+					 oldBase = src css path
+					 newBase:
+					 By default it's optimized css path, but if siteRoot available than siteRoot path (related to optimized css path)
+					 */
+					//buildCSS: false,
+					separateCSS: true,
+					//siteRoot: '../angular_comp/GPlatform',
 
-	                optimize:'none',
-			        baseUrl: "<%= yeoman.app %>/bower_components",
-                    mainConfigFile: '<%= yeoman.app %>/scripts/models/requirejs.config.js',
-                    out: '<%= yeoman.app %>/scripts/requirejs.optimized.js',
-                    name:'scripts/cache'
-                }
-            }
-        },
+					optimize: 'none',
+					baseUrl: "<%= yeoman.app %>/bower_components",
+					//In child project this should changed to : '<%= yeoman.app %>/bower_components/infra-client/app/scripts/requirejs.config.js'. Child project's paths config can maintained in separated paths
+					mainConfigFile: '<%= yeoman.app %>/bower_components/infra-client/app/scripts/requirejs.config.js',
+					out: '<%= yeoman.app %>/scripts/requirejs.optimized.js',
+					name: 'gng-client/app/scripts/requirejs.config.cache',
+					paths: {
+						'gng-client/app': '..'
+					}
+
+				}
+			}
+		},
 
 		// configurable paths
 		yeoman: {
@@ -64,7 +76,7 @@ module.exports = function (grunt) {
 					livereload: '<%= connect.options.livereload %>'
 				},
 				files: [
-					'<%= yeoman.app %>/'+angularCompConfig.all,
+					'<%= yeoman.app %>/' + mainCfg.angular.comp.all,
 					'<%= yeoman.app %>/*.html',
 					'.tmp/styles/{,*/}*.css',
 					'{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
@@ -107,14 +119,16 @@ module.exports = function (grunt) {
 		},
 		clean: {
 			dist: {
-				files: [{
-					dot: true,
-					src: [
-						'.tmp',
-						'<%= yeoman.dist %>/*',
-						'!<%= yeoman.dist %>/.git*'
-					]
-				}]
+				files: [
+					{
+						dot: true,
+						src: [
+							'.tmp',
+							'<%= yeoman.dist %>/*',
+							'!<%= yeoman.dist %>/.git*'
+						]
+					}
+				]
 			},
 			server: '.tmp'
 		},
@@ -169,12 +183,14 @@ module.exports = function (grunt) {
 				browsers: ['last 1 version']
 			},
 			dist: {
-				files: [{
-					expand: true,
-					cwd: '.tmp/styles/',
-					src: '{,*/}*.css',
-					dest: '.tmp/styles/'
-				}]
+				files: [
+					{
+						expand: true,
+						cwd: '.tmp/styles/',
+						src: '{,*/}*.css',
+						dest: '.tmp/styles/'
+					}
+				]
 			}
 		},
 		// not used since Uglify task does concat,
@@ -186,15 +202,17 @@ module.exports = function (grunt) {
 		// check index.html to edit your build targets
 		// enable this task if you prefer defining your build targets here
 		uglify: {
-		 dist: {
-			 files: [{
-				 expand: true,
-				 cwd: '<%= yeoman.app %>',
-				 src: angularCompConfig.js,
-				 dest: '<%= yeoman.dist %>'
-			 }]
-		 }
-		 },
+			dist: {
+				files: [
+					{
+						expand: true,
+						cwd: '<%= yeoman.app %>',
+						src: [mainCfg.infra + '/**/*.js', 'scripts/models/server-gng.js'],
+						dest: '<%= yeoman.dist %>'
+					}
+				]
+			}
+		},
 		'bower-install': {
 			app: {
 				html: '<%= yeoman.app %>/index.html',
@@ -217,33 +235,37 @@ module.exports = function (grunt) {
 			options: {
 				dest: '<%= yeoman.dist %>'
 			},
-			html: '<%= yeoman.app %>/' + angularCompConfig.index
+			html: '<%= yeoman.app %>/' + mainCfg.index
 		},
 		usemin: {
 			options: {
 				assetsDirs: ['<%= yeoman.dist %>']
 			},
-			html: ['<%= yeoman.dist %>/'+ angularCompConfig.html],
+			html: ['<%= yeoman.dist %>/' + mainCfg.index],
 			css: ['<%= yeoman.dist %>/styles/{,*/}*.css']
 		},
 		imagemin: {
 			dist: {
-				files: [{
-					expand: true,
-					cwd: '<%= yeoman.app %>/images',
-					src: '{,*/}*.{gif,jpeg,jpg,png}',
-					dest: '<%= yeoman.dist %>/images'
-				}]
+				files: [
+					{
+						expand: true,
+						cwd: '<%= yeoman.app %>/images',
+						src: '{,*/}*.{gif,jpeg,jpg,png}',
+						dest: '<%= yeoman.dist %>/images'
+					}
+				]
 			}
 		},
 		svgmin: {
 			dist: {
-				files: [{
-					expand: true,
-					cwd: '<%= yeoman.app %>/images',
-					src: '{,*/}*.svg',
-					dest: '<%= yeoman.dist %>/images'
-				}]
+				files: [
+					{
+						expand: true,
+						cwd: '<%= yeoman.app %>/images',
+						src: '{,*/}*.svg',
+						dest: '<%= yeoman.dist %>/images'
+					}
+				]
 			}
 		},
 		cssmin: {
@@ -275,32 +297,36 @@ module.exports = function (grunt) {
 					 removeEmptyAttributes: true,
 					 removeOptionalTags: true*/
 				},
-				files: [{
-					expand: true,
-					cwd: '<%= yeoman.app %>',
-					src: ['*.html',angularCompConfig.html],
-					dest: '<%= yeoman.dist %>'
-				}]
+				files: [
+					{
+						expand: true,
+						cwd: '<%= yeoman.app %>',
+						src: ['*.html', mainCfg.angular.comp.html],
+						dest: '<%= yeoman.dist %>'
+					}
+				]
 			}
 		},
 		// Put files not handled in other tasks here
 		copy: {
 			dist: {
-				files: [{
-					expand: true,
-					dot: true,
-					cwd: '<%= yeoman.app %>',
-					dest: '<%= yeoman.dist %>',
-					src: [
-						angularCompConfig.json,
-						'*.{ico,png,txt}',
-						'.htaccess',
-						'images/{,*/}*.{webp,gif}',
-						'styles/fonts/{,*/}*.*',
-						'bower_components/sass-bootstrap/fonts/*.*',
-						'bower_components/font-awesome/fonts/*.*'
-					]
-				}]
+				files: [
+					{
+						expand: true,
+						dot: true,
+						cwd: '<%= yeoman.app %>',
+						dest: '<%= yeoman.dist %>',
+						src: [
+							mainCfg.angular.comp.json,
+							'*.{ico,png,txt}',
+							'.htaccess',
+							'images/{,*/}*.{webp,gif}',
+							'styles/fonts/{,*/}*.*',
+							'bower_components/sass-bootstrap/fonts/*.*',
+							'bower_components/font-awesome/fonts/*.*'
+						]
+					}
+				]
 			},
 			styles: {
 				expand: true,
@@ -315,6 +341,18 @@ module.exports = function (grunt) {
 				cwd: '<%= yeoman.app %>/bower_components/font-awesome',
 				dest: '<%= yeoman.dist %>/styles',
 				src: 'fonts/*.*'
+			},
+			localDeploy: {
+				expand: true,
+				cwd: '<%= yeoman.dist %>',
+				dest: mainCfg.localServer,
+				src: '**'
+			},
+			remoteDeploy: {
+				expand: true,
+				cwd: '<%= yeoman.dist %>',
+				dest: mainCfg.remoteServer,
+				src: '**'
 			}
 		},
 		modernizr: {
@@ -374,16 +412,18 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('build', [
 		'clean:dist',
+		//Generate optimized file as the source which will be used by tasks(concat, uglify) generated by useminPrepare
+		'requirejs',
 		'useminPrepare',
 		'concurrent:dist',
 		'autoprefixer',
 		'concat',
 		'cssmin',
 		'uglify',
-		'modernizr',
+		//'modernizr',
 		'copy:dist',
 		'copy:fonts',
-		//'rev',
+		'rev',
 		'usemin'
 	]);
 
