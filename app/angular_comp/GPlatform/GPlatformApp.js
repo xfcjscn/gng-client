@@ -6,17 +6,17 @@ require(['jquery', 'infra-client/app/scripts/models/angular', 'infra-client/app/
 	var configObj = function ($routeProvider, $translateProvider) {
 		//Config Router
 		$routeProvider.when('/Home', {
-			templateUrl: '../Home/Home.html'
+			templateUrl: 'angular_comp/Home/Home.html'
 		}).when('/Showcase', {
-					templateUrl: '../Showcase/Showcase.html'
+					templateUrl: 'angular_comp/Showcase/Showcase.html'
 				}).when('/Account', {
-					templateUrl: '../Account/Account.html'
+					templateUrl: 'angular_comp/Account/Account.html'
 				}).when('/AddItem', {
-					templateUrl: '../AddItem/AddItem.html'
+					templateUrl: 'angular_comp/AddItem/AddItem.html'
 				}).when('/Setting', {
-					templateUrl: '../Setting/Setting.html'
+					templateUrl: 'angular_comp/Setting/Setting.html'
 				}).when('/RegisterForm', {
-					templateUrl: '../RegisterForm/RegisterForm.html'
+					templateUrl: 'angular_comp/RegisterForm/RegisterForm.html'
 				}).otherwise({
 					redirectTo: '/Home'
 				});

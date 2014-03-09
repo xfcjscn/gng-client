@@ -49,10 +49,10 @@ function UploaderCtrl($scope) {
 			},
 
 			// Flash settings
-			flash_swf_url : '../../bower_components/plupload/js/Moxie.swf',
+			flash_swf_url : 'bower_components/plupload/js/Moxie.swf',
 
 			// Silverlight settings
-			silverlight_xap_url : '../../bower_components/plupload/js/Moxie.xap'
+			silverlight_xap_url : 'bower_components/plupload/js/Moxie.xap'
 		});
 
 		// Emit FileUploaded
