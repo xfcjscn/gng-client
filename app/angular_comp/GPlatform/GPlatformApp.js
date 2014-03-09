@@ -23,7 +23,7 @@ require(['jquery', 'infra-client/app/scripts/models/angular', 'infra-client/app/
 
 		//Config Translate
 		$translateProvider.useStaticFilesLoader({
-			prefix: '/angular_comp/languages/',
+			prefix: 'angular_comp/languages/',
 			suffix: '.json'
 		});
 		$translateProvider.preferredLanguage('zh');
