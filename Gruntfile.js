@@ -17,7 +17,7 @@ var mainCfg = {
 		}
 	},
 	infra: 'bower_components/infra-client/app',
-	index: 'angular_comp/GPlatform/GPlatform.html',
+	index: 'index.html',
 	localServer: 'c:/apps/Apache24/htdocs',
 	remoteServer: 'c:/apps/Apache24/htdocs'
 };
