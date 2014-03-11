@@ -1,5 +1,5 @@
 <div ng-controller="RegisterFormCtrl" class="container">
-    <form name="registerForm" ng-submit="registerSubmit()" style="max-width: 330px;" no-validate parsley-validate>
+    <form name="registerForm" ng-submit="registerSubmit()" style="max-width: 330px;" data-parsley-validate>
         <div class="alert alert-danger" ng-show="status == 'FAILURE'">Sorry, can not register now.</div>
         <div class="form-group">
             <label class="control-label sr-only" for="username">{{'email' | translate}}</label>

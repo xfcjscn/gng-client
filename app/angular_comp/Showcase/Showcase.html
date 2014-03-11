@@ -1,5 +1,5 @@
 <div ng-controller="ShowcaseCtrl" class="container ui-mobile">
-    <div data-role="page" style="padding-top: 70px">
+    <div data-role="page">
         <div data-role="content">
             <div class="row">
                 <div class="col-lg-3 col-sm-6">{{'totally' | translate}} {{items.length}} {{'items' | translate}}</div>
@@ -93,7 +93,7 @@
             </div>
         </div>
 
-        <div data-role="panel" data-position="right" data-display="overlay" data-dismissible="false" data-position-fixed="true" id="mypanel">
+        <div id="mypanel">
             <button class="btn btn-default" data-rel="close">{{'back' | translate}}</button>
             <div ng-show="selectedItem">
                 <div ng-include="'angular_comp/ItemDetails/ItemDetails.html'"></div>
