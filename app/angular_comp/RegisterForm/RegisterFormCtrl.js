@@ -14,8 +14,10 @@ function RegisterFormCtrl($scope) {
 				var deferredUsers = instance.saveChanges();
 				deferredUsers.then(function () {
 					$scope.status = 'Completed';
+					$scope.$apply();
 				}, function () {
 					$scope.status = 'FAILURE';
+					$scope.$apply();
 				});
 			});
 		};

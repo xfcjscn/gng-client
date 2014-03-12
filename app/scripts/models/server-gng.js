@@ -5,7 +5,7 @@ define(['infra-client/app/scripts/models/server'], function(server) {
     gngServer.getActionHistory = function(){
         if(!gngServer._actionHistory){
             gngServer._actionHistory = server.getDb().then(function(dbContext) {
-                var p = dbContext.ActionHistory.toArray();
+                var p = dbContext.ActionHistorys.toArray();
                 return p;
             });
         }

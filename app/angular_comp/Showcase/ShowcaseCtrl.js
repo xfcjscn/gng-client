@@ -76,7 +76,7 @@ function ShowcaseCtrl($scope) {
 					target: item.id
 				};
 				gplatformServer.getDb().then(function (instance) {
-					instance.ActionHistory.add(ah);
+					instance.ActionHistorys.add(ah);
 					instance.saveChanges();
 				});
 
@@ -87,8 +87,9 @@ function ShowcaseCtrl($scope) {
 					action: 'view',
 					target: item.id
 				};
-				gplatformServer.getDb().cache.then(function (cache) {
-					cache.ActionHistory.add(ah);
+				gplatformServer.getDb().then(function (db) {
+					var cache = db.cache;
+					cache.ActionHistorys.add(ah);
 					cache.saveChanges();
 				});
 
