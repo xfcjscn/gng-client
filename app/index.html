@@ -14,8 +14,6 @@
     <script type="text/javascript" src="bower_components/infra-client/app/scripts/requirejs.config.js"></script>
     <script type="text/javascript" src="scripts/requirejs.config.js"></script>
 
-    <script type="text/javascript" src="scripts/requirejs.optimized.js"></script>
-
     <script type="text/javascript" src="angular_comp/GPlatform/GPlatformApp.js"></script>
     <script type="text/javascript" src="angular_comp/GPlatform/GPlatformCtrl.js"></script>
     <script type="text/javascript" src="angular_comp/Menu/MenuCtrl.js"></script>
@@ -31,13 +29,9 @@
     <script type="text/javascript" src="angular_comp/Setting/SettingCtrl.js"></script>
     <!-- endbuild -->
 
-
-    <!-- build:css styles/main.css -->
-    <link type="text/css" href="styles/gplatform.css" rel="stylesheet">
-
-    <link type="text/css" href="scripts/requirejs.optimized.css" rel="stylesheet">
-    <!-- endbuild -->
-
+    <!-- Refer to Output of Requirejs Build/Optimize Flow (Go through requirejs optimize flow, NO need to go through webapp-generator build flow) -->
+    <script type="text/javascript" src="requirejs.optimized.js"></script>
+    <link type="text/css" href="requirejs.optimized.css" rel="stylesheet">
 
 </head>
 <body class="g-bs2-bg">
