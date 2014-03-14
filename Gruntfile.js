@@ -251,6 +251,18 @@ module.exports = function (grunt) {
 						'<%= config.dist %>/*.{ico,png}'
 					]
 				}
+			},
+			requirejs: {
+				files: [
+					{
+						expand: true,
+						cwd:'<%= config.dist %>',
+						src: [
+							mainCfg.requirejs.jsout,
+							mainCfg.requirejs.cssout
+						]
+					}
+				]
 			}
 		},
 
@@ -490,6 +502,7 @@ module.exports = function (grunt) {
 		'clean:requirejsDist',
 		'requirejs:compile',
 		'copy:requirejs',
+		'rev:requirejs',
 		'clean:requirejsApp'
 	]);
 
