@@ -21,9 +21,9 @@ module.exports = function (grunt) {
 		index: 'index.html',
 		localServer: 'c:/apps/Apache24/htdocs',
 		remoteServer: 'c:/apps/Apache24/htdocs',
-		requirejs:{
-			jsout:'requirejs.optimized.js',
-			cssout:'requirejs.optimized.css'
+		requirejs: {
+			jsout: 'requirejs.optimized.js',
+			cssout: 'requirejs.optimized.css'
 		}
 	};
 	// Load grunt tasks automatically
@@ -163,11 +163,11 @@ module.exports = function (grunt) {
 				]
 			},
 			server: '.tmp',
-			requirejsApp :{
+			requirejsApp: {
 				files: [
 					{
 						expand: true,
-						cwd:'<%= config.app %>',
+						cwd: '<%= config.app %>',
 						src: [
 							mainCfg.requirejs.jsout,
 							mainCfg.requirejs.cssout
@@ -175,11 +175,11 @@ module.exports = function (grunt) {
 					}
 				]
 			},
-			requirejsDist:{
+			requirejsDist: {
 				files: [
 					{
 						expand: true,
-						cwd:'<%= config.dist %>',
+						cwd: '<%= config.dist %>',
 						src: [
 							mainCfg.requirejs.jsout,
 							mainCfg.requirejs.cssout
@@ -256,7 +256,7 @@ module.exports = function (grunt) {
 				files: [
 					{
 						expand: true,
-						cwd:'<%= config.dist %>',
+						cwd: '<%= config.dist %>',
 						src: [
 							mainCfg.requirejs.jsout,
 							mainCfg.requirejs.cssout
@@ -338,16 +338,16 @@ module.exports = function (grunt) {
 		// By default, your `index.html`'s <!-- Usemin block --> will take care of
 		// minification. These next options are pre-configured if you do not wish
 		// to use the Usemin blocks.
-        // cssmin: {
-        //     dist: {
-        //         files: {
-        //             '<%= config.dist %>/styles/main.css': [
-        //                 '.tmp/styles/{,*/}*.css',
-        //                 '<%= config.app %>/styles/{,*/}*.css'
-        //             ]
-        //         }
-        //     }
-        // },
+		// cssmin: {
+		//     dist: {
+		//         files: {
+		//             '<%= config.dist %>/styles/main.css': [
+		//                 '.tmp/styles/{,*/}*.css',
+		//                 '<%= config.app %>/styles/{,*/}*.css'
+		//             ]
+		//         }
+		//     }
+		// },
 
 		uglify: {
 			dist: {
@@ -394,15 +394,15 @@ module.exports = function (grunt) {
 			fonts: {
 				expand: true,
 				dot: true,
-				cwd: '<%= config.app %>/bower_components/font-awesome',
-				dest: '<%= config.dist %>/styles',
-				src: 'fonts/*.*'
+				cwd: '<%= config.app %>',
+				dest: '<%= config.dist %>',
+				src: ['bower_components/**/*.woff', 'bower_components/**/*.ttf']
 			},
 			angularComp: {
 				files: [
 					{
 						expand: true,
-						cwd:'<%= config.app %>',
+						cwd: '<%= config.app %>',
 						dest: '<%= config.dist %>',
 						src: [
 							mainCfg.angular.comp.all
@@ -414,7 +414,7 @@ module.exports = function (grunt) {
 				files: [
 					{
 						expand: true,
-						cwd:'<%= config.app %>',
+						cwd: '<%= config.app %>',
 						dest: '<%= config.dist %>',
 						src: [
 							mainCfg.requirejs.jsout,
