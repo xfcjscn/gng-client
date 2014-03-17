@@ -391,12 +391,12 @@ module.exports = function (grunt) {
 				dest: '.tmp/styles/',
 				src: '{,*/}*.css'
 			},
-			fonts: {
+			indirection: {
 				expand: true,
 				dot: true,
 				cwd: '<%= config.app %>',
 				dest: '<%= config.dist %>',
-				src: ['bower_components/**/*.woff', 'bower_components/**/*.ttf']
+				src: ['bower_components/**/*.{gif,jpeg,jpg,png,woff,ttf}']
 			},
 			angularComp: {
 				files: [
@@ -518,7 +518,7 @@ module.exports = function (grunt) {
 		'uglify',
 		//'modernizr',
 		'copy:dist',
-		'copy:fonts',
+		'copy:indirection',
 		'copy:angularComp',
 		'rev',
 		'usemin',
