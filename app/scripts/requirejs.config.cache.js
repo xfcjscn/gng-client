@@ -1,4 +1,4 @@
-define(['infra-client/app/scripts/models/angular', 'infra-client/app/scripts/models/infra', 'css!infra-client/app/styles/infra', 'q/q', 'purl/purl'], function () {
+define(['infra-client/app/scripts/models/angular', 'infra-client/app/scripts/models/infra', 'css!infra-client/app/styles/infra', 'css!gng-client/app/styles/gplatform', 'q/q', 'purl/purl'], function () {
 	return {};
 });
 
