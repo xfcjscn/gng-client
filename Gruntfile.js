@@ -62,6 +62,9 @@ module.exports = function (grunt) {
 					//Out path need to be under app folder, so that to avoid "../app" in url rewrite
 					out: '<%= config.app %>/' + mainCfg.requirejs.jsout,
 
+					//Supposed to be supported in next require-css release
+					//cssOut : '<%= config.app %>/' + mainCfg.requirejs.cssout,
+
 					//TODO: WARNING: This is project specific config, need to be replaced with sub-project config
 					name: 'gng-client/app/scripts/requirejs.config.cache',
 
