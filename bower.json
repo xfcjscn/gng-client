@@ -6,11 +6,11 @@
   },
   "devDependencies": {},
   "resolutions": {
-    "jquery": ">=1.4.3",
     "angular": "1.2.14",
     "angular-animate": "1.2.14",
     "jquery-ui": "~1.10.3",
     "animate.css": "~3.1.0",
-    "outlayer": ">=1.1.2 <2.0"
+    "outlayer": ">=1.1.2 <2.0",
+    "jquery": "~2.1.0"
   }
 }
