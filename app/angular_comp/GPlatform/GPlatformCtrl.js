@@ -18,6 +18,23 @@ function GPlatformCtrl($scope) {
 		//server.config.serverURL = 'http://192.168.2.100:8080/gng-server-1.0';
 		server.config.serverURL = 'http://server.gplatform.net/gng-server-1.0';
 
+		function blockUI(){
+        	$.blockUI();
+        }
+        function unBlockUI(){
+        	$.unblockUI();
+        }
+        
+        server.config.dbListeners = {
+        		beforeCreate:blockUI,
+    			beforeUpdate:blockUI,
+    			beforeDelete:blockUI,
+    			
+    			afterCreate:unBlockUI,
+    			afterUpdate:unBlockUI,
+    			afterDelete:unBlockUI
+        };
+		
         //User server in template directly
         $scope.server = server;
 	});
