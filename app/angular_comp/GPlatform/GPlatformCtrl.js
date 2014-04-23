@@ -203,7 +203,10 @@ function GPlatformCtrl($scope) {
 
 		//server.config.serverURL = 'http://localhost:8080/gng-server-1.0';
 		//server.config.serverURL = 'http://192.168.2.100:8080/gng-server-1.0';
-		server.config.serverURL = 'http://server.gplatform.net/gng-server-1.0';
+		//server.config.serverURL = 'https://192.168.2.100:8443/gng-server-1.0.1-SNAPSHOT';
+		//server.config.serverURL = 'https://www.gplatform.net:8443/gng-server-1.0.1-SNAPSHOT';
+		
+		server.config.serverURL = 'http://server.gplatform.net/gng-server';
 
 		function blockUI() {
 			$.blockUI();
