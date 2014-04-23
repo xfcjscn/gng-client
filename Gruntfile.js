@@ -41,6 +41,13 @@ module.exports = function (grunt) {
 			app: 'app',
 			dist: 'dist'
 		},
+		
+		release : {
+		    options : {
+		        file : 'bower.json',
+		        npm : false
+		    }
+	    },
 
 		requirejs: {
 			compile: {
