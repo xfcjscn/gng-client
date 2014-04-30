@@ -1,6 +1,6 @@
 'use strict';
 function ShowcaseCtrl($scope) {
-	require(['infra-client/app/scripts/models/server', 'gng-client/app/scripts/models/server-gng'], function (gplatformServer, gngServer) {
+	require(['sudoor-client/app/scripts/models/server', 'gng-client/app/scripts/models/server-gng'], function (gplatformServer, gngServer) {
 		simpleCart({
 			checkout: {
 				type: "SendForm",

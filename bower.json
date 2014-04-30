@@ -2,7 +2,7 @@
   "name": "gng-client",
   "version": "0.1.0",
   "dependencies": {
-    "infra-client": "0.1.2"
+    "sudoor-client": "*"
   },
   "devDependencies": {},
   "resolutions": {

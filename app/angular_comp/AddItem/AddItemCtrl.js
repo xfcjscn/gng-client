@@ -1,6 +1,6 @@
 'use strict';
 function AddItemCtrl($scope) {
-	require(['infra-client/app/scripts/models/server'], function (server) {
+	require(['sudoor-client/app/scripts/models/server'], function (server) {
 		$scope.status = 'NotStarted';
 		$scope.item = {
 			Name: '',

@@ -1,6 +1,6 @@
 'use strict';
 function GPlatformCtrl($scope) {
-	require([ 'jquery', 'infra-client/app/scripts/models/server', 'infra-client/app/scripts/models/postload' ], function($, server, postload) {
+	require([ 'jquery', 'sudoor-client/app/scripts/models/server', 'sudoor-client/app/scripts/models/postload' ], function($, server, postload) {
 		$scope.$on('$viewContentLoaded', function() {
 			postload.callBack();
 			$('.swiper-container').swiper({

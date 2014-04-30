@@ -1,7 +1,7 @@
 'use strict';
 function UploaderCtrl($scope) {
 
-	require(['infra-client/app/scripts/models/server','plupload/js/i18n/zh_CN'], function(gplatformServer){
+	require(['sudoor-client/app/scripts/models/server','plupload/js/i18n/zh_CN'], function(gplatformServer){
 		// There suppose to be NO view code in controller, this is a temp solution,
 		// should move to directive in future
 		$('#uploader').plupload({
