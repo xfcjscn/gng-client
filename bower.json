@@ -2,15 +2,10 @@
   "name": "gng-client",
   "version": "0.1.0",
   "dependencies": {
-    "sudoor-client": "*"
+    "sudoor-client": "master"
   },
   "devDependencies": {},
   "resolutions": {
-    "angular": "1.2.14",
-    "angular-animate": "1.2.14",
-    "jquery-ui": "~1.10.3",
-    "animate.css": "~3.1.0",
-    "outlayer": ">=1.1.2 <2.0",
-    "jquery": "~2.1.0"
+    "angular": "1.2.14"
   }
 }

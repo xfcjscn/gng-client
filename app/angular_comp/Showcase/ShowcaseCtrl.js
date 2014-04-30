@@ -1,6 +1,6 @@
 'use strict';
 function ShowcaseCtrl($scope) {
-	require(['sudoor-client/app/scripts/models/server', 'gng-client/app/scripts/models/server-gng'], function (gplatformServer, gngServer) {
+	require(['sudoor-client/app/scripts/models/server', 'gng-client/app/scripts/models/server-gng'], function (server, gngServer) {
 		simpleCart({
 			checkout: {
 				type: "SendForm",
@@ -30,7 +30,7 @@ function ShowcaseCtrl($scope) {
 			$scope._onLoading = true;
 			if ($scope._currentItemSet == null) {
 
-				gplatformServer.getDb().then(function (instance) {
+				server.getDb().then(function (instance) {
 					var itemPromise = instance.Items.take($scope.bufferSize).toArray();
 					itemPromise.then(function (result) {
 						//This result is an enhanced array
@@ -70,12 +70,12 @@ function ShowcaseCtrl($scope) {
 
 			var ah = null;
 
-			if (gplatformServer.isLogin()) {
-				ah = {owner: gplatformServer.getSession().inspect().value.user.name,
+			if ($scope.isLogin) {
+				ah = {owner: server.getSession().inspect().value.user.name,
 					action: 'view',
 					target: item.id
 				};
-				gplatformServer.getDb().then(function (instance) {
+				server.getDb().then(function (instance) {
 					instance.ActionHistorys.add(ah);
 					instance.saveChanges();
 				});
@@ -87,7 +87,7 @@ function ShowcaseCtrl($scope) {
 					action: 'view',
 					target: item.id
 				};
-				gplatformServer.getDb().then(function (db) {
+				server.getDb().then(function (db) {
 					var cache = db.cache;
 					cache.ActionHistorys.add(ah);
 					cache.saveChanges();
@@ -97,26 +97,26 @@ function ShowcaseCtrl($scope) {
 		}
 
 		$scope.deleteItem = function (item) {
-			gplatformServer.getDb().then(function (instance) {
+			server.getDb().then(function (instance) {
 				instance.remove(item);
 				instance.saveChanges();
 			});
 		}
 
 		$scope.attachItem = function (item) {
-			gplatformServer.getDb().then(function (instance) {
+			server.getDb().then(function (instance) {
 				instance.attachOrGet(item);
 			});
 		}
 
 		$scope.saveChanges = function () {
-			gplatformServer.getDb().then(function (instance) {
+			server.getDb().then(function (instance) {
 				instance.saveChanges();
 			});
 		}
 
 		$scope.showMyStuffes = function () {
-			$scope.query = gplatformServer.getSession().inspect().value.user.name;
+			$scope.query = server.getSession().inspect().value.user.name;
 		}
 
 		$scope.showAllStuffes = function () {
@@ -124,8 +124,8 @@ function ShowcaseCtrl($scope) {
 		}
 
 		$scope.isEditable = function (item) {
-			if (gplatformServer.isLogin()) {
-				if (item.owner == gplatformServer.getSession().inspect().value.user.name) {
+			if ($scope.isLogin) {
+				if (item.owner == server.getSession().inspect().value.user.name) {
 					return true;
 				}
 			}
