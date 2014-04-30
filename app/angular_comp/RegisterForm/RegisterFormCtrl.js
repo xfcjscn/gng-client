@@ -14,10 +14,10 @@ function RegisterFormCtrl($scope) {
 				var deferredUsers = instance.saveChanges();
 				deferredUsers.then(function () {
 					$scope.status = 'Completed';
-					$scope.$apply();
+					$scope.$digest();
 				}, function () {
 					$scope.status = 'FAILURE';
-					$scope.$apply();
+					$scope.$digest();
 				});
 			});
 		};

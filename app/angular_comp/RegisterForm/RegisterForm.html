@@ -1,22 +1,27 @@
 <div ng-controller="RegisterFormCtrl" class="container">
-    <form name="registerForm" ng-submit="registerSubmit()" style="max-width: 330px;" data-parsley-validate>
-        <div class="alert alert-danger" ng-show="status == 'FAILURE'">Sorry, can not register now.</div>
-        <div class="form-group">
-            <label class="control-label sr-only" for="username">{{'email' | translate}}</label>
-            <input class="form-control" type="email" name="username" ng-model="formData.Username" placeholder="{{'email' | translate}}"
-                   required parsley-remote2="http://localhost:8080/gng-server-1.0/data/rest/SpringSecurity/CredentialUser"
-                   parsley-trigger="change">
-        </div>
-        <div class="form-group">
-            <label class="control-label sr-only" for="password">{{'password' | translate}}</label>
-            <input class="form-control" type="password" name="password" ng-model="formData.Password" placeholder="{{'password' | translate}}"
-                   required parsley-trigger="change">
-        </div>
-        <div class="form-group">
-            <label class="control-label sr-only" for="confirmPassword">{{'confirmPassword' | translate}}</label>
-            <input class="form-control" type="password" name="confirmPassword" placeholder="{{'confirmPassword' | translate}}" required
-                   parsley-trigger="change" parsley-equalto="input[name=password]">
-        </div>
-        <button class="btn btn-success btn-sm btn-block" type="submit">{{'register' | translate}}</button>
-    </form>
+	<div ng-show="status == 'Completed'">
+		<div class="alert alert-success" ng-show="status == 'Completed'">Thanks for register. <a href="#/Account">Go to Login</a></div>
+	</div>
+	<div ng-show="status != 'Completed'">
+		<form name="registerForm" ng-submit="registerSubmit()" style="max-width: 330px;" data-parsley-validate>
+	        <div class="alert alert-danger" ng-show="status == 'FAILURE'">Sorry, can not register now.</div>
+	        <div class="form-group">
+	            <label class="control-label sr-only" for="username">{{'email' | translate}}</label>
+	            <input class="form-control" type="email" name="username" ng-model="formData.Username" placeholder="{{'email' | translate}}"
+	                   required data-parsley-remote2="http://localhost:8080/gng-server/data/rest/SpringSecurity/CredentialUser"
+	                   data-parsley-trigger="change">
+	        </div>
+	        <div class="form-group">
+	            <label class="control-label sr-only" for="password">{{'password' | translate}}</label>
+	            <input class="form-control" type="password" name="password" ng-model="formData.Password" placeholder="{{'password' | translate}}"
+	                   required data-parsley-trigger="change">
+	        </div>
+	        <div class="form-group">
+	            <label class="control-label sr-only" for="confirmPassword">{{'confirmPassword' | translate}}</label>
+	            <input class="form-control" type="password" name="confirmPassword" placeholder="{{'confirmPassword' | translate}}" required
+	                   data-parsley-trigger="change" data-parsley-equalto="input[name=password]">
+	        </div>
+	        <button class="btn btn-success btn-sm btn-block" type="submit">{{'register' | translate}}</button>
+	    </form>
+	</div>
 </div>

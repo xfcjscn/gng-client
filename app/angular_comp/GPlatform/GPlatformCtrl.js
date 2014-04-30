@@ -1,5 +1,5 @@
 'use strict';
-function GPlatformCtrl($scope) {
+function GPlatformCtrl($scope, $rootScope) {
 	require([ 'jquery', 'sudoor-client/app/scripts/models/server', 'sudoor-client/app/scripts/models/postload' ], function($, server, postload) {
 		$scope.$on('$viewContentLoaded', function() {
 			postload.callBack();
@@ -205,7 +205,7 @@ function GPlatformCtrl($scope) {
 		server.config.serverURL = 'http://192.168.2.100:8080/gng-server';
 		//server.config.serverURL = 'https://192.168.2.100:8443/gng-server';
 		//server.config.serverURL = 'https://www.gplatform.net:8443/gng-server';
-		
+
 		//server.config.serverURL = 'http://server.gplatform.net/gng-server';
 
 		function blockUI() {
@@ -227,9 +227,12 @@ function GPlatformCtrl($scope) {
 
 		// User server in template directly
 		$scope.server = server;
-		$scope.isLogin = server.isLogin();
 
-		
+		server.isLogin().then(function(res) {
+			$rootScope.isLogin = res;
+			$rootScope.$digest();
+		});
+
 	});
 }
-GPlatformCtrl.$inject = [ '$scope' ];
+GPlatformCtrl.$inject = [ '$scope', '$rootScope' ];
