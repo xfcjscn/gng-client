@@ -6,7 +6,6 @@
   },
   "devDependencies": {},
   "resolutions": {
-    "angular": "1.2.14",
-    "spin.js": "~2.0.0"
+    "angular": "1.2.14"
   }
 }
