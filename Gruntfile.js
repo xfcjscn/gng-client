@@ -17,7 +17,7 @@ module.exports = function (grunt) {
 				all: 'angular_comp/**'
 			}
 		},
-		infra: 'bower_components/infra-client/app',
+		sudoor: 'bower_components/sudoor-client/app',
 		index: 'index.html',
 		localServer: 'c:/apps/Apache24/htdocs',
 		remoteServer: 'c:/apps/Apache24/htdocs',
@@ -73,10 +73,10 @@ module.exports = function (grunt) {
 					//cssOut : '<%= config.app %>/' + mainCfg.requirejs.cssout,
 
 					//TODO: WARNING: This is project specific config, need to be replaced with sub-project config
-					name: 'gng-client/app/scripts/requirejs.config.cache',
+					name: 'gng-client/app/angular_comp/GPlatform/GPlatformApp',
 
-					//TODO: In sub-project this should changed to : '<%= config.app %>/bower_components/infra-client/app/scripts/requirejs.config.js'.
-					mainConfigFile: '<%= config.app %>/bower_components/infra-client/app/scripts/requirejs.config.js',
+					//TODO: In sub-project this should changed to : '<%= config.app %>/bower_components/sudoor-client/app/scripts/requirejs.config.js'.
+					mainConfigFile: '<%= config.app %>/bower_components/sudoor-client/app/scripts/requirejs.config.js',
 
 					//TODO: WARNING: This is project specific config, need to be replaced with sub-project config
 					paths: {
@@ -365,7 +365,7 @@ module.exports = function (grunt) {
 					{
 						expand: true,
 						cwd: '<%= config.app %>',
-						src: mainCfg.infra + '/**/*.js',
+						src: mainCfg.sudoor + '/**/*.js',
 						dest: '<%= config.dist %>'
 					}
 				]

@@ -23,8 +23,12 @@
     <script type="text/javascript" src="requirejs.optimized.js"></script>
     <link type="text/css" href="requirejs.optimized.css" rel="stylesheet">
 
-    <!-- build:js scripts/main.js -->
-    <script type="text/javascript" src="angular_comp/GPlatform/GPlatformApp.js"></script>
+	<script>
+    require(['gng-client/app/angular_comp/GPlatform/GPlatformApp','sudoor-client/app/scripts/models/logging'], function(app, log){    	
+    	log.debug("Start APP:" + app);
+    });
+    </script>
+    <!-- build:js scripts/main.js -->    
     <script type="text/javascript" src="angular_comp/GPlatform/GPlatformCtrl.js"></script>
     <script type="text/javascript" src="angular_comp/Menu/MenuCtrl.js"></script>
     <script type="text/javascript" src="angular_comp/Home/HomeCtrl.js"></script>
