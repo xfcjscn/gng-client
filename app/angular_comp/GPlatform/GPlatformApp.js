@@ -5,9 +5,9 @@ define([ 'jquery', 'angular/angular', 'angular-route/angular-route', 'angular-ui
         'angular-translate-loader-static-files/angular-translate-loader-static-files', 'angular-xeditable/dist/js/xeditable',
         'ngAnimate-animate.css/animate', 'sudoor-client/app/scripts/models/angular-requirejs', 'blockui/jquery.blockUI',
         'swiper/dist/idangerous.swiper', 'sudoor-client/app/scripts/models/parsleyValidator', 'css!normalize-css/normalize',
-        'css!font-awesome/css/font-awesome', 'css!animate.css/animate', 'css!sudoor-client/app/styles/infra', 'swipe/swipe',
-        'bootstrap/dist/js/bootstrap', 'underscore/underscore', 'underscore.string', 'modernizr/modernizr', 'simplecart-js/simpleCart',
-        'css!sudoor-client/app/styles/infra', 'css!gng-client/app/styles/gplatform' ], function($) {
+        'css!font-awesome/css/font-awesome', 'css!animate.css/animate', 'css!sudoor-client/app/styles/infra', 'bootstrap/dist/js/bootstrap',
+        'underscore/underscore', 'underscore.string', 'modernizr/modernizr', 'simplecart-js/simpleCart', 'css!sudoor-client/app/styles/infra',
+        'css!gng-client/app/styles/gplatform' ], function($) {
 	var gplatformApp = angular.module('GPlatform', [ 'ngRoute', 'ui.router', 'ngResource', 'ngAnimate', 'chieffancypants.loadingBar',
 	        'http-auth-interceptor', 'infinite-scroll', 'pascalprecht.translate', 'xeditable', 'ngAnimate-animate.css', 'angular-requirejs' ]);
 
@@ -70,7 +70,7 @@ define([ 'jquery', 'angular/angular', 'angular-route/angular-route', 'angular-ui
 	$(function() {
 		angular.bootstrap($(document), [ 'GPlatform' ]);
 	});
-	
+
 	return gplatformApp;
 
 });
